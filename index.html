@@ -5,34 +5,42 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Salesforce Demo with PureBlue Chat</title>
+
+    <!-- Add the chat widget script in the head with defer attribute -->
+    <script defer src="./test.js"></script>
   </head>
   <body>
     <div id="root"></div>
 
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- Add the chat widget script -->
-    <script src="./test.js"></script>
-
     <!-- Initialize the chat widget with clear parameters -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Initialize the PureBlue Chat Widget with explicit parameters
-        PureBlueChat.init({
-          personaSlug: "sales-agent", // Make sure this is passed correctly
-          prospectSlug: "ping-identity", // Make sure this is passed correctly
-          chatServerUrl: "https://mend.pureblue.info",
-          position: "bottom-right",
-          primaryColor: "#1a5cff",
-          width: 400,
-          height: 600,
-        });
+      // Wait for both DOM and script to be loaded
+      window.addEventListener("load", () => {
+        // Check if PureBlueChat is defined before using it
+        if (typeof PureBlueChat !== "undefined") {
+          // Initialize the PureBlue Chat Widget with explicit parameters
+          PureBlueChat.init({
+            personaSlug: "sales-agent",
+            prospectSlug: "ping-identity",
+            chatServerUrl: "https://mend.pureblue.info",
+            position: "bottom-right",
+            primaryColor: "#1a5cff",
+            width: 400,
+            height: 600,
+          });
 
-        // Log for debugging
-        console.log("Chat widget initialized with:", {
-          personaSlug: "sales-agent",
-          prospectSlug: "ping-identity",
-        });
+          // Log for debugging
+          console.log("Chat widget initialized with:", {
+            personaSlug: "sales-agent",
+            prospectSlug: "ping-identity",
+          });
+        } else {
+          console.error(
+            "PureBlueChat is not defined. Script may not have loaded correctly."
+          );
+        }
       });
     </script>
   </body>
