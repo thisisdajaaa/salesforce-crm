@@ -7,12 +7,21 @@
     <title>Salesforce Demo with PureBlue Chat</title>
 
     <!-- Add the chat widget script in the head with defer attribute -->
-    <script defer src="./test.js"></script>
+    <script defer src="/test.js"></script>
   </head>
   <body>
     <div id="root"></div>
 
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      window.PureBlueChat = {
+        init: function (config) {
+          console.log("Test initialization with config:", config);
+          alert("Script loaded successfully!");
+        },
+      };
+    </script>
 
     <!-- Initialize the chat widget with clear parameters -->
     <script>
