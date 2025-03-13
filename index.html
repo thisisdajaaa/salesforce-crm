@@ -28,31 +28,14 @@
 
     <!-- Initialize the chat widget with clear parameters -->
     <script>
-      // Wait for both DOM and script to be loaded
       window.addEventListener("load", () => {
-        // Check if PureBlueChat is defined before using it
         if (typeof PureBlueChat !== "undefined") {
-          // Initialize the PureBlue Chat Widget with explicit parameters
           PureBlueChat.init({
             personaSlug: "sales-agent",
             prospectSlug: "ping-identity",
-            chatServerUrl: "https://purebluechat.com", // Use base domain
-            tenantSlug: "mend", // Add explicit tenant parameter
-            position: "bottom-right",
-            primaryColor: "#1a5cff",
-            width: 400,
-            height: 600,
+            tenant: "mend",
+            chatDomain: "purebluechat.com",
           });
-
-          // Log for debugging
-          console.log("Chat widget initialized with:", {
-            personaSlug: "sales-agent",
-            prospectSlug: "ping-identity",
-          });
-        } else {
-          console.error(
-            "PureBlueChat is not defined. Script may not have loaded correctly."
-          );
         }
       });
     </script>
