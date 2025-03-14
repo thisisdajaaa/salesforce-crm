@@ -17,26 +17,28 @@
 
     <script type="module" src="/src/main.jsx"></script>
 
-    <script>
-      window.PureBlueChat = {
-        init: function (config) {
-          console.log("Test initialization with config:", config);
-          alert("Script loaded successfully!");
-        },
-      };
-    </script>
+    <!-- Remove the custom PureBlueChat implementation that's overriding the loaded script -->
 
     <!-- Initialize the chat widget with clear parameters -->
     <script>
       window.addEventListener("load", () => {
-        if (typeof PureBlueChat !== "undefined") {
-          PureBlueChat.init({
-            personaSlug: "sales-agent",
-            prospectSlug: "ping-identity",
-            tenant: "mend",
-            chatDomain: "purebluechat.com",
-          });
-        }
+        setTimeout(() => {
+          if (typeof PureBlueChat !== "undefined") {
+            PureBlueChat.init({
+              personaSlug: "sales-agent",
+              prospectSlug: "ping-identity",
+              tenant: "mend",
+              chatDomain: "purebluechat.com",
+              position: "bottom-right",
+              primaryColor: "#1a5cff",
+              width: 400,
+              height: 600,
+              isPublic: false, // This is important for private chat
+            });
+          } else {
+            console.error("PureBlueChat widget not available");
+          }
+        }, 1000);
       });
     </script>
   </body>
