@@ -17,9 +17,7 @@
 
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- Remove the custom PureBlueChat implementation that's overriding the loaded script -->
-
-    <!-- Initialize the chat widget with clear parameters -->
+    <!-- Initialize the chat widget -->
     <script>
       window.addEventListener("load", () => {
         setTimeout(() => {
@@ -33,7 +31,7 @@
               primaryColor: "#1a5cff",
               width: 400,
               height: 600,
-              isPublic: false, // This is important for private chat
+              isPublic: false, // Private chat
             });
           } else {
             console.error("PureBlueChat widget not available");
